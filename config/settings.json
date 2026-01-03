@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "defaultMode": "default"
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true,
+    "code-review@claude-plugins-official": true,
+    "ai-ml-toolkit@claude-code-templates": true,
+    "hookify@claude-plugins-official": true,
+    "gastown@n-skills": true
+  },
+  "alwaysThinkingEnabled": true
+}
