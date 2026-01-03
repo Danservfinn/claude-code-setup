@@ -6,7 +6,7 @@ A complete configuration package for Claude Code, including plugins, skills, age
 
 ```bash
 # Clone and run installer
-git clone https://github.com/YOUR_USERNAME/claude-code-setup.git
+git clone https://github.com/Danservfinn/claude-code-setup.git
 cd claude-code-setup
 chmod +x install.sh
 ./install.sh
@@ -15,7 +15,7 @@ chmod +x install.sh
 Or run directly:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/claude-code-setup/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Danservfinn/claude-code-setup/main/install.sh | bash
 ```
 
 ## What's Included

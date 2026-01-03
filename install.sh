@@ -2,7 +2,7 @@
 
 # Claude Code Setup Installer
 # This script sets up Claude Code with all plugins, skills, agents, commands, and configuration
-# Usage: curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/claude-code-setup/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/Danservfinn/claude-code-setup/main/install.sh | bash
 
 set -e
 
@@ -32,7 +32,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ ! -d "$SCRIPT_DIR/skills" ]; then
     echo -e "${YELLOW}Cloning configuration repository...${NC}"
     TEMP_DIR=$(mktemp -d)
-    git clone --depth 1 https://github.com/YOUR_USERNAME/claude-code-setup.git "$TEMP_DIR"
+    git clone --depth 1 https://github.com/Danservfinn/claude-code-setup.git "$TEMP_DIR"
     SCRIPT_DIR="$TEMP_DIR"
 fi
 
