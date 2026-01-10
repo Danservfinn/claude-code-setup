@@ -1,16 +1,8 @@
 {
   "mcpServers": {
-    "shadcn": {
+    "chrome-devtools": {
       "command": "npx",
-      "args": ["shadcn@latest", "mcp"]
-    },
-    "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"]
-    },
-    "browsermcp": {
-      "command": "npx",
-      "args": ["@browsermcp/mcp@latest"]
+      "args": ["-y", "@anthropic/mcp-chrome-devtools"]
     }
   }
 }

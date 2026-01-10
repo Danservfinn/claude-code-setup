@@ -11,8 +11,16 @@
       "Bash(cat:*)",
       "Bash(python3:*)",
       "Bash(grep:*)",
+      "Bash(huggingface-cli repo restart:*)",
       "Bash(curl:*)",
-      "Bash(find:*)"
+      "Bash(git remote add:*)",
+      "Bash(git fetch:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git remote remove:*)",
+      "Bash(find:*)",
+      "Bash(git merge-base:*)",
+      "WebFetch(domain:omoplatapus-byrd.hf.space)",
+      "Bash(tee:*)"
     ]
   }
 }
