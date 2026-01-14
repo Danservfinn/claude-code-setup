@@ -40,14 +40,58 @@ pytest -v --tb=short
 
 ### Step 3: Update Project Documentation
 
-Based on what changed, update relevant docs:
+Based on what changed, update **ALL** relevant documentation:
+
+#### 3a. Update CLAUDE.md Files
+
+**CRITICAL:** CLAUDE.md files are the project's institutional memory. Update them when:
+
+| Changed | CLAUDE.md Section to Update |
+|---------|----------------------------|
+| New patterns discovered | Add to patterns/conventions section |
+| New commands/workflows | Add to commands/workflows section |
+| Environment changes | Update environment/setup instructions |
+| Architecture changes | Update architecture overview |
+| New dependencies | Update dependencies section |
+| Bug fixes with learnings | Add to known issues/gotchas section |
+| Performance optimizations | Document the approach taken |
+
+Check ALL CLAUDE.md files in the project hierarchy:
+- `./CLAUDE.md` (project root)
+- `./.claude/CLAUDE.md` (claude-specific instructions)
+- Parent directories if relevant
+
+#### 3b. Update ARCHITECTURE.md
+
+**CRITICAL:** ARCHITECTURE.md documents system design and technical decisions. Update when:
+
+| Changed | ARCHITECTURE.md Section to Update |
+|---------|----------------------------------|
+| New API endpoints | API Routes / Endpoints section |
+| New components/modules | Component Architecture section |
+| Database schema changes | Data Model / Schema section |
+| New services/agents | Service Architecture section |
+| Integration changes | External Integrations section |
+| Performance changes | Performance Considerations section |
+| Security changes | Security Architecture section |
+
+If ARCHITECTURE.md doesn't exist, create it with sections for:
+- System Overview
+- Component Architecture
+- Data Flow
+- API Routes
+- Database Schema
+- External Integrations
+
+#### 3c. Update Other Documentation
 
 | Changed | Update |
 |---------|--------|
-| New API endpoints | ARCHITECTURE.md |
-| New components | ARCHITECTURE.md |
-| Config changes | CLAUDE.md |
-| User features | README.md |
+| User-facing features | README.md |
+| Environment variables | .env.example |
+| Build/deploy process | DEPLOYMENT.md or README |
+| API contracts | API docs, OpenAPI spec |
+| Configuration options | Config docs |
 
 ### Step 4: Update Knowledge Base
 
@@ -113,12 +157,46 @@ Types: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`
 
 ### Step 6: Deploy
 
-Push to all remotes:
+#### 6a. Push to Git Remotes
 
 ```bash
 git push origin main
 git push hf main 2>/dev/null || echo "No HuggingFace remote"
 ```
+
+#### 6b. Deploy to Hosting Platform
+
+Detect and deploy to the project's hosting platform:
+
+**Vercel Projects** (detected by `vercel.json` or `.vercel/`):
+```bash
+vercel --prod
+```
+
+**Railway Projects** (detected by `railway.json` or Procfile):
+```bash
+railway up
+```
+
+**Next.js on Vercel** (auto-deploy on push to main):
+- Verify deployment status at Vercel dashboard
+- Check build logs if deployment fails
+
+**Python/Flask on Railway**:
+```bash
+railway up --detach
+```
+
+**Manual Deployment Required**:
+- If no auto-deploy configured, prompt user for deployment command
+- Document the deployment process in CLAUDE.md for future runs
+
+#### 6c. Verify Deployment
+
+After deployment:
+1. Check the production URL is accessible
+2. Verify key functionality works
+3. Monitor for errors in logs (first 2 minutes)
 
 ## Output Format
 
@@ -131,23 +209,40 @@ Report progress like this:
 📋 Changes detected:
    - server.py (modified)
    - agi_runner.py (modified)
+   - src/components/Dashboard.tsx (new)
 
 🧪 Running tests...
    ✅ 94 passed, 0 failed
 
-📝 Documentation:
-   - Updated ARCHITECTURE.md (new endpoint)
+📝 Documentation Updated:
+   CLAUDE.md:
+   - ✅ Added new Dashboard component pattern
+   - ✅ Documented performance optimization approach
+   ARCHITECTURE.md:
+   - ✅ Added Dashboard to Component Architecture
+   - ✅ Documented new /api/metrics endpoint
+   - ✅ Updated Data Flow diagram
+   README.md:
+   - ✅ Added Dashboard feature description
 
 🧠 Knowledge Base:
    - Recorded observation: "AGI metrics endpoint added"
    - Updated .claude/metadata/agi-runner.md
+   - Updated manifest.md
 
 📦 Committed:
    feat: add comprehensive AGI metrics endpoint
 
 🚀 Deployed:
-   ✅ origin/main
-   ✅ hf/main
+   Git:
+   - ✅ origin/main
+   - ✅ hf/main
+   Hosting:
+   - ✅ Vercel production deployment
+   - 🔗 https://myapp.vercel.app
+   Verification:
+   - ✅ Production URL accessible
+   - ✅ New endpoint responding
 
 ✅ Ship complete!
 ```
@@ -169,11 +264,13 @@ Report progress like this:
 
 ## Arguments
 
-- `/ship-it` - Full workflow
+- `/ship-it` - Full workflow (tests, docs, KB, commit, deploy)
 - `/ship-it --skip-tests` - Skip tests (dangerous!)
-- `/ship-it --no-deploy` - Commit only, no push
+- `/ship-it --no-deploy` - Commit and push to git only, no hosting deployment
 - `/ship-it --no-kb` - Skip knowledge base updates
-- `/ship-it --dry-run` - Show what would happen
+- `/ship-it --no-docs` - Skip documentation updates (not recommended)
+- `/ship-it --dry-run` - Show what would happen without making changes
+- `/ship-it --verify-only` - Only verify current deployment status
 
 ## Safety Rules
 
@@ -182,3 +279,6 @@ Report progress like this:
 3. Verify test output before proceeding
 4. Ask before large documentation rewrites
 5. Keep knowledge base updates focused and minimal
+6. Always update CLAUDE.md and ARCHITECTURE.md when patterns, architecture, or workflows change
+7. Verify deployment succeeded before marking ship complete
+8. If deployment fails, rollback git push is NOT automatic - alert user

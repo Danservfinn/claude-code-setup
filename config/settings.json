@@ -21,7 +21,12 @@
     "ralph-wiggum@claude-code-plugins": true,
     "frontend-design@claude-plugins-official": true,
     "agent-sdk-dev@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true
+    "code-review@claude-plugins-official": true,
+    "database-migrations@claude-code-workflows": true,
+    "stripe@claude-plugins-official": true,
+    "commit-commands@claude-code-plugins": true,
+    "feature-dev@claude-code-plugins": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "model": "opus"
 }
