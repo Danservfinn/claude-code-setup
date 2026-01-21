@@ -3,6 +3,51 @@
     "chrome-devtools": {
       "command": "npx",
       "args": ["-y", "@anthropic/mcp-chrome-devtools"]
+    },
+    "notion-slim": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-notion-slim"],
+      "env": {
+        "NOTION_API_TOKEN": "YOUR_NOTION_API_TOKEN_HERE"
+      }
+    },
+    "railway": {
+      "command": "npx",
+      "args": ["-y", "@railway/mcp-server"]
+    },
+    "railway-logs": {
+      "command": "python",
+      "args": ["/Users/kurultai/mcp-railway-logs/railway_mcp.py"]
+    },
+    "postgres-prod": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://user:password@host:port/database"
+      ]
+    },
+    "postgres-local": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://kurultai@localhost:5432/trewth?schema=public"
+      ]
+    },
+    "bullmq-prod": {
+      "command": "npx",
+      "args": ["-y", "@adamhancock/bullmq-mcp"],
+      "env": {
+        "REDIS_URL": "redis://user:password@host:port"
+      }
+    },
+    "mercury-banking": {
+      "command": "uv",
+      "args": ["run", "--with", "mcp[cli]", "mcp", "run", "/Users/kurultai/mcp-mercury-banking/mcp-mercury.py"],
+      "env": {
+        "MERCURY_API_KEY": "YOUR_MERCURY_API_KEY_HERE"
+      }
     }
   }
 }
