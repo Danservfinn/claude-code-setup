@@ -1,0 +1,75 @@
+{
+  "$schema": "https://moltbot.dev/schema/config.json",
+  "skills": {
+    "entries": {
+      "c-suite": {
+        "enabled": true,
+        "description": "Unified C-Suite executive team for Kurultai LLC and Parse SaaS",
+        "commands": {
+          "coo": {
+            "agent": "coo",
+            "description": "Business operations, compliance, and Notion tracking"
+          },
+          "cfo": {
+            "agent": "cfo",
+            "description": "Financial reporting, MRR/ARR, Stripe/Mercury monitoring"
+          },
+          "cto": {
+            "agent": "cto",
+            "model": "opus",
+            "description": "Technical operations, deployments, database, queues"
+          },
+          "ceo": {
+            "agent": "ceo",
+            "description": "Business intelligence, revenue analytics, growth metrics"
+          },
+          "csuite": {
+            "agents": ["cto", "cfo", "ceo", "coo"],
+            "parallel": true,
+            "description": "Full executive team report"
+          }
+        },
+        "env": {
+          "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}",
+          "STRIPE_WEBHOOK_SECRET": "${STRIPE_WEBHOOK_SECRET}",
+          "MERCURY_API_KEY": "${MERCURY_API_KEY}",
+          "DATABASE_URL": "${DATABASE_URL}",
+          "REDIS_URL": "${REDIS_URL}",
+          "NOTION_API_KEY": "${NOTION_API_KEY}",
+          "NOTION_COMPLIANCE_DB": "${NOTION_COMPLIANCE_DB}",
+          "NOTION_DECISIONS_DB": "${NOTION_DECISIONS_DB}",
+          "NOTION_MEETINGS_DB": "${NOTION_MEETINGS_DB}",
+          "NOTION_TASKS_DB": "${NOTION_TASKS_DB}",
+          "NOTION_DOCUMENTS_DB": "${NOTION_DOCUMENTS_DB}",
+          "NOTION_VENDORS_DB": "${NOTION_VENDORS_DB}"
+        },
+        "mcp": {
+          "railway": {
+            "access": ["cto"],
+            "description": "Railway deployments and logs"
+          },
+          "postgres": {
+            "access": ["cto", "cfo", "ceo"],
+            "readOnly": ["cfo", "ceo"],
+            "description": "Database queries"
+          },
+          "bullmq": {
+            "access": ["cto"],
+            "description": "Queue management"
+          },
+          "notion-slim": {
+            "access": ["coo"],
+            "description": "Operational tracking"
+          }
+        }
+      }
+    }
+  },
+  "channels": {
+    "allowlist": {
+      "signal": ["executive-team"],
+      "discord": ["c-suite-channel"],
+      "telegram": ["kurultai-exec"]
+    }
+  }
+}

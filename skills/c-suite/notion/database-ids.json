@@ -1,0 +1,29 @@
+{
+  "description": "Kurultai LLC Notion Database IDs for COO operations",
+  "databases": {
+    "tasks": {
+      "name": "Tasks & Action Items",
+      "id": "2ec13b88-902c-812d-be58-da01edb23405"
+    },
+    "documents": {
+      "name": "Documents & Records",
+      "id": "2ec13b88-902c-81aa-98ef-d7a6092aab7e"
+    },
+    "financial": {
+      "name": "Financial Transactions",
+      "id": "2ec13b88-902c-81fd-9ea3-e48173cefefb"
+    },
+    "compliance": {
+      "name": "Compliance & Deadlines",
+      "id": "2ec13b88-902c-8179-9a4f-efd54478a2d5"
+    },
+    "vendors": {
+      "name": "Vendors & Partners",
+      "id": "2ec13b88-902c-81d1-a6f3-f5779c2e729c"
+    },
+    "metrics": {
+      "name": "Metrics & Reports",
+      "id": "2ec13b88-902c-81da-a723-ca3bdf6abaf4"
+    }
+  }
+}
